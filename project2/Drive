@@ -1,0 +1,34 @@
+package project2;
+
+import java.util.Scanner;
+
+public class Drive {
+	public static void main(String[] args) {
+		Scanner scnr = new Scanner(System.in);
+		boolean duration;
+	
+try {
+ int input = Integer.valueOf(scnr.next());
+ if (input == 1){
+	 War cardGame = new War();
+ }
+ else {
+	 BlackJack cardGame = new BlackJack();
+ }
+ }
+catch(ArithmeticException e) {
+	System.out.println("please enter a number");
+}
+
+cardGame.info();
+boolean duration;
+
+while (duration){
+	cardGame.status();
+	double decide = scnr.nextdouble();
+	 double x = cardGame.userinput(decide);
+	 double y cardGame.computerinput();
+	cardGame.compete(x, y, healthHP, healthCP);
+}
+}
+}

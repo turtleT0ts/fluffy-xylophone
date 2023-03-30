@@ -1,0 +1,78 @@
+package project2;
+
+import java.util.Random;
+import java.util.ArrayList;
+
+public abstract class Game {
+	
+		// cards that the player currently holds//
+	protected ArrayList<String> userhand = new ArrayList<String>();
+	protected ArrayList<String> computerhand = new ArrayList<String>();
+		//cards that the computer holds// 
+		protected double min = 0;
+		protected double max = 13;
+		protected double healthHP=5;
+		protected double healthCP=5;
+		protected double user;
+		protected double computer;
+		Random random = new Random();
+
+		protected double cardsval[] = new double[13];
+		protected String cardsname[] = new String[13];
+		
+		public Game() {
+		cardsval[0] = 1;
+		cardsval[1] = 2;
+		cardsval[2] = 3;
+		cardsval[3] = 4;	
+		cardsval[4] = 5;
+		cardsval[5] = 6;	
+		cardsval[6] = 7;
+		cardsval[7] = 8;	
+		cardsval[8] = 9;
+		cardsval[9] = 10;	
+		cardsval[10] = 11;
+		cardsval[11] = 12;	
+		cardsval[12] = 13;
+
+		cardsname[0] = "one";
+		cardsname[1] = "two";
+		cardsname[2] = "three";
+		cardsname[3] = "four";	
+		cardsname[4] = "five";
+		cardsname[5] = "six";	
+		cardsname[6] = "seven";
+		cardsname[7] = "eight";	
+		cardsname[8] = "nine";
+		cardsname[9] = "ten";	
+		cardsname[10] = "jack";
+		cardsname[11] = "queen";	
+		cardsname[12] = "king";
+		}
+
+		public ArrayList<String> makeHandP(){
+			for(int i = 0; i < 5; i++) {
+				int value = (int) ((Math.random() * (max - min)) + min);
+				userhand.add(cardsname[value]);
+			} 
+		return(userhand);
+		}
+		public ArrayList<String> makeHandCP(){
+			for(int i = 0; i < 5; i++) {
+				int value = (int)((Math.random() * (max - min)) + min);
+				computerhand.add(cardsname[value]);
+			} 
+			return computerhand;
+		}
+		
+		
+		public abstract double compete(double user, double computer, double healthHP, double healthCP);
+		public abstract void status();
+		public abstract double userinput(double choice);
+		public abstract double computerinput();
+		public abstract void info();
+		public abstract boolean end();
+		
+				
+	}
+

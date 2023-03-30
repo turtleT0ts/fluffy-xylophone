@@ -1,0 +1,94 @@
+package project2;
+
+public class BlackJack extends Game {
+ public BlackJack() {
+	 super();
+ }
+	public double compete(double user, double computer, double healthHP, double healthCP) {
+		this.user = user;
+		this.computer = computer;
+		this.healthHP = healthHP;
+		this.healthCP = healthCP;
+		
+		if (healthHP == 0) {
+			if (healthCP == 0) {
+				System.out.println("youre final score is " + user);
+				System.out.println("The dealer's final socre is " + computer);
+				if (user > computer && user <= 21) {
+					System.out.println("You have won ! ");
+				}
+				else if (user > computer && user > 21) {
+					System.out.println("You passed 21, you have lost" );
+				}
+				else if (user < computer && computer <= 21) {
+					System.out.println("The dealer has won! " );
+				}
+				else if (user >21 && computer > 21) {
+					System.out.println("you have both lost for going over 21" );
+				}
+				else  {
+					System.out.println("you have won, the dealer passed 21" );
+				}
+		
+		
+	}
+		}
+	System.out.println("the game goes on");
+	}
+	
+	public void status() {
+		System.out.println("you current total is " + user);
+		System.out.println("the dealers total is" + computer);
+	}
+	
+	public double computerinput() {
+			if (computer < 15) {
+			int value = (int)((Math.random() * (12 - 0)) + 0);
+			System.out.println("The dealer drew  a " + cardsname[value] + " card");
+			computer+=cardsval[value];
+		}
+		if (computer>=15) {
+			System.out.println("the dealer is no longer drawing cards");
+			healthCP = 0;
+		}
+		return (computer);
+	}
+	
+	public double userinput(double choice) {
+		this.choice = choice;
+		if (user < 21){
+		if (choice == 1) {
+			int value = (int)((Math.random() * (12 - 0)) + 0);
+			System.out.println("you drew a " + cardsname[value] + "card");
+			user+=cardsval[value];
+			}
+		}
+		if (choice == 3) {
+		System.out.println("game ended");
+		healthCP = 0;
+		healthHP= 0;
+		}
+	else{
+			System.out.println("you have decided to stop drawing cards");
+			healthHP = 0;
+			
+		}
+		return (user);
+	}
+	
+	public void info(){
+
+		System.out.println("Type 0 to stop or type 1 to continue");
+		System.out.println("Whoever get's closest to 21 wins");
+		System.out.println("type 3 to quit the game at any time");
+	}
+
+	public boolean end() {
+		if (healthHP == 0 && healthCP == 0) {
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+}
